@@ -4,12 +4,13 @@ import { sleep, group } from 'k6';
 let groupResponseTimes = {};
 
 export let options = {
-//    stages: [
-//        { duration: '10s', target: 5 },  // Ramp-up to 5 users over 10 seconds
-//        { duration: '10s', target: 10 }, // Ramp-up to 10 users over next 10 seconds
-//    ],
-    vus: 1,
-    duration: '300s',
+    stages: [
+        { duration: '10s', target: 5 },  // Ramp-up to 5 users over 10 seconds
+        { duration: '10s', target: 10 }, // Ramp-up to 10 users over next 10 seconds
+	{ duration: '5m', target: 10 },   // Stay at 10 users for 5 minutes
+    ],
+//    vus: 1,
+//    duration: '300s',
 };
 
 export default function () {
